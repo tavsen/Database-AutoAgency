@@ -1,0 +1,102 @@
+using Microsoft.EntityFrameworkCore;
+
+namespace Autoagency
+{
+    public class Library : DbContext
+    {
+        public DbSet<Employer> Employer { get; set; }
+        public DbSet<Position> Position { get; set; }
+        public DbSet<Manufacturers> Manufacturers { get; set; }
+        public DbSet<Addequipment> Addequipment { get; set; }
+
+        public DbSet<Bodytype> Bodytype { get; set; }
+        public DbSet<Autos> Autos { get; set; }
+        public DbSet<customers> customers { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    => options.UseSqlite("Data Source=library.db");
+}
+
+public class Employer
+{
+    public int EmployId { get; set; }
+    public string Name { get; set; }
+    public date BirthDate { get; set; }
+    public char Gender { get; set; }
+    public string Addres { get; set; }
+    public string Phone { get; set; }
+    public string PassportData { get; set; }
+    public int PositionID { get; set; }
+
+    public List<Employer> Employerd { get; } = new List<Employer>(); 
+    public Position Position { get; set; }
+}
+
+public class Position
+{
+    public int PositionID { get; set; }
+    public string PositionName { get; set; }
+    public float Oklad { get; set; }
+    public string Duties { get; set; }
+    public string Demands { get; set; }
+}
+
+public class Manufacturers
+{
+    public int ManafactureID { get; set; }
+    public string Name { get; set; }
+    public string country { get; set; }
+    public string Address { get; set; }
+    public string Description { get; set; }
+    public string EmployerID { get; set; }
+
+    }
+
+public class Addequipment
+{
+    public int AdddeqID { get; set; }
+    public string Name { get; set; }
+    public string characteristic { get; set; }
+    public int cost { get; set; }
+    }
+
+public class Bodytype
+{
+    public int BodytypeID { get; set; }
+    public string BookTitle { get; set; }
+    public string Author { get; set; }
+}
+
+public class Autos
+{
+    public int AutoID { get; set; }
+    public string Mark { get; set; }
+    public date DateA { get; set; }
+    public int bodytypeId { get; set; }
+    public char colour { get; set; }
+    public int bodyId { get; set; }
+    public int engineID { get; set; }
+    public char characteristic  { get; set; }
+    public int EquipID1 { get; set; }
+    public int EquipID2 { get; set; }
+    public int EquipID3 { get; set; }
+    public int cost { get; set; }
+    public int EmployerID { get; set; }
+
+    }
+
+    public class customers
+    {
+        public string Name { get; set; }
+        public string adress { get; set; }
+        public string Phonenumber { get; set; }
+        public string PassportData { get; set; }
+        public int AutoID { get; set; }
+        public date DateZ { get; set; }
+        public date DateS { get; set; }
+        public char MarkS { get; set; }
+        public char MarkM { get; set; }
+        public char precent { get; set; }
+        public int EmployerID { get; set; }
+    }
+ }
+
